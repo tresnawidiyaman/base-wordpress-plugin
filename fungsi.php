@@ -37,6 +37,14 @@ function testmenuadmin() {
         'subtesmenu', //url dari apps di adminnya
         'fungsi_submenu' //fungsi untuk menjalankan menu, jadi kalau menu di klik maka fungsi apa yang jalan
     );
+    add_submenu_page(
+        'certsetting', //Judul Slug menu utama (url)
+        'Tambah Member', //Tittle Web Plugin
+        'Tambah Member', //Tittle Menu plugin
+        'manage_options', //Kapabilitas menu, ini bisa diakses oleh siapa (disini diakses oleh admin)
+        'memberbaru', //url dari apps di adminnya
+        'fungsi_memberbaru' //fungsi untuk menjalankan menu, jadi kalau menu di klik maka fungsi apa yang jalan
+    );
 
     
 }
@@ -46,7 +54,13 @@ function fungsi_testmenu(){
     <p> Ini adalah fasilitas dari mengatur plugin</p>';
 }
 
+function fungsi_memberbaru (){
+    global $wpdb;
+    include('addmember.php');
+}
+
 function fungsi_submenu(){
+    //membuat update option yang nantinya akan disimpan kedalam database wordpress sebagai value tertentu
     if ($_POST['nohp'] != '') {
         update_option('wa_nohp', $_POST['nohp']);
         update_option('wa_pesan', $_POST['pesan']);
