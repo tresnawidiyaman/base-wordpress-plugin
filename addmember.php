@@ -5,9 +5,9 @@ echo'<h1>Tambah Member Baru</h1>';
 if (isset($_POST) && $_POST['nama'] !='' && $_POST['kelas'] !=''){
     $wpdb->query("INSERT INTO `sekolah_pg` (`sekolah_nama`,`sekolah_kelas`,`sekolah_alamat`) 
     VALUES (
-        '".$_POST['nama']."',
-        '".$_POST['kelas']."',
-        '".$_POST['alamat']."'
+        '".sanitize_text_field($_POST['nama'])."',
+        '".sanitize_text_field($_POST['kelas'])."',
+        '".sanitize_text_field($_POST['alamat'])."'
         )");
     echo 'Data berhasil di tambahkan';
 } else {
@@ -32,3 +32,14 @@ if (isset($_POST) && $_POST['nama'] !='' && $_POST['kelas'] !=''){
     </tr>
     </table>
     </form>
+    <hr>
+
+    <!-- Menampilkan Data -->
+    <ol>
+        <?php
+        $data = $wpdb->get_results("SELECT * FROM `sekolah_pg`");
+        foreach ($data as $data) {
+            echo '<li>'.$data->sekolah_nama.' | '.$data->sekolah_kelas.' | '.$data->sekolah_alamat.'</li>';
+        }
+        ?>
+    </ol>
