@@ -28,3 +28,6 @@ Contoh :
 <blockquote> '".sanitize_text_field($_POST['nama'])."', </blockquote>
 Contoh jika email :
 <blockquote> '".sanitize_email($_POST['email'])."', </blockquote> 
+
+### Referensi
+<blockquote> https://www.youtube.com/playlist?list=PL2JjeP39Uobyb1hRPF4KxVyOH0AAfNn8N </blockquote>
